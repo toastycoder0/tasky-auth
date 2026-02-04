@@ -21,3 +21,29 @@ Las variables de entorno se pueden definir en un archivo `.env` en la raíz del 
 ```bash
 ./mvnw dependency:resolve
 ```
+
+### Comandos de docker
+
+Levantar la base de datos
+
+```bash
+docker-compose up -d
+```
+
+Iniciar la base de datos
+
+```bash
+docker-compose start
+```
+
+Para la base de datos
+
+```bash
+docker-compose stop
+```
+
+Eliminar la base de datos
+
+```bash
+docker-compose down
+```
