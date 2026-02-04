@@ -25,4 +25,21 @@ public class UserService {
   public UserModel saveUser(UserModel user) {
     return userRespository.save(user);
   }
+
+  public UserModel updateUser(UUID id, UserModel userDetails) {
+    return userRespository.findById(id).map(user -> {
+      user.setEmail(userDetails.getEmail());
+      user.setPassword(userDetails.getPassword());
+      user.setActive(userDetails.isActive());
+      return userRespository.save(user);
+    }).orElseThrow(() -> new RuntimeException("User not found"));
+  }
+
+  public void deleteUser(UUID id) {
+    if (userRespository.existsById(id)) {
+      userRespository.deleteById(id);
+    } else {
+      throw new RuntimeException("User not found");
+    }
+  }
 }
