@@ -38,10 +38,9 @@ public class UserService {
     }).orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
   }
 
-  public ResponseEntity<GenericResponse> deleteUser(UUID id) {
+  public void deleteUser(UUID id) {
     if (userRespository.existsById(id)) {
       userRespository.deleteById(id);
-      return ResponseEntity.ok(new GenericResponse("Usuario eliminado"));
     } else {
       throw new ResourceNotFoundException("Usuario no encontrado");
     }
